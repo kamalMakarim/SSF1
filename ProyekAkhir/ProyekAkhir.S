@@ -78,12 +78,17 @@ Start_Program:
 ;==============================================================
 
 
-;==============================================================
+;=============================================================;
+;                    DC Motor FUNCTIONS                       ;
+;=============================================================;
 Set_Fan_Speed:
     CPI     R28, 18
-    ;BRLO    R
-    LDI     R30, 255
-    RCALL   Set_Motor_DC
+    BRLO    Fan_Speed_Low
+    ;---------------------------;
+    CPI     R28, 25
+    BRLO    Fan_Speed_Medium
+    ;---------------------------;
+    BRLO    Fan_Speed_High
 ;==============================================================
 Set_Motor_DC:
     LDI   R31, 10               ;count to give enough cycles of PWM
@@ -98,7 +103,21 @@ Set_Motor_DC:
     bak:RCALL delay_ms          ;0.5s delay
         RET                     ;& return to main subroutine
 ;==============================================================
-Fan_Speed_Hot:
+Fan_Speed_Low:
+    LDI     R30, 70
+    RCALL   Set_Motor_DC
+    RET
+;==============================================================
+Fan_Speed_Medium:
+    LDI     R30, 180
+    RCALL   Set_Motor_DC
+    RET
+;==============================================================
+Fan_Speed_High:
+    LDI     R30, 255
+    RCALL   Set_Motor_DC
+    RET
+;==============================================================
 
 
 ;=============================================================;
@@ -139,7 +158,7 @@ DHT11_Sensor:
     RCALL DHT11_reading     ;read temp (3rd byte of 40-bit data)
     MOV   R28, R18          ;copy temperature
     ;-----------------------;
-    ;RCALL Set_Fan_Speed
+    RCALL Set_Fan_Speed
     RCALL LCD_Display_Reading ;print value
     RJMP  read              ;go back & get another sensor reading
 ;==============================================================

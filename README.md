@@ -23,15 +23,15 @@ Solusi yang kami bawa ialah sebuah perangkat controller yang akan digunakan untu
 
 Komponen yang dibutuhkan:
 
-Arduino Uno - 1 buah
-Breadboard - 2 buah
-Resistor - 3 buah
-LCD - 1 buah
-LED - 2 buah
-IC 7404 - 1 buah
-DHT11 - 1 buah
-Kabel jumper
-DC Motor - 1 buah
+Arduino Uno - 1 buah <br>
+Breadboard - 2 buah <br>
+Resistor - 3 buah <br>
+LCD - 1 buah <br>
+LED - 2 buah <br>
+IC 7404 - 1 buah <br>
+DHT11 - 1 buah <br>
+Kabel jumper <br>
+DC Motor - 1 buah <br>
 
 Rangkaian fisik yang kami gunakan ini secara garis besar menggunakan breadboard dan kabel jumper untuk menyambungkan para komponen serta arduino uno sebagai otaknya. DC Motor pada rangkaian kami bekerja sebagai pengganti dari peran AC sebagai pengatur suhu ruangan. Perangkat ini secara otomatis membaca suhu dan kelembaban udara ruangan dengan menggunakan sensor DHT11 yang kemudian data akan diproses oleh arduino untuk mengatur suhu dari AC yang kita inginkan. Selain itu, suhu yang dibaca oleh sensor DHT11 dikirim ke arduino yang berbeda yang menyediakan sebuah monitor LCD yang terhubung dengan arduino agar user dapat melihat keterangan suhu ruangan dengan mengimplementasikan protokol I2C. Terdapat juga sebuah button controller yang dihubungkan dengan IC 7404 yang dengan arduino yang dapat digunakan untuk mengatur suhu AC secara manual dengan menggunakan sebuah konsep interrupt. Selain terhubung dengan arduino, IC 7404 juga terhubung dengan 2 LED.
 

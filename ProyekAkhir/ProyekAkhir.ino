@@ -12,5 +12,5 @@ void setup()
 void loop() {}
 
 ISR(INT0_vect){
-    PORTB ^= (1 << 5);
+    PORTB ^= (1 << 3);
 }
